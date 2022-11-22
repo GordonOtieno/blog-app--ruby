@@ -1,0 +1,31 @@
+node_modules
+/.bundle
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore uploaded files in development.
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
+/public/assets
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+# Created a new app.
+# Initialized your project with Git.
+# Setup Postgres database.
+# Build your project schema.
+# Create and run the necessary migration files.
+# Implemented Foreign keys constraints.
