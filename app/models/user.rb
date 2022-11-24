@@ -4,6 +4,6 @@ class User < ApplicationRecord
   has_many :posts, foreign_key: 'author_id'
 
   def most_recent_posts
-    Post.order(created_at: :desc).includes(:author).limit(5)
+    posts.order(created_at: :desc).includes(:author).limit(5)
   end
 end
