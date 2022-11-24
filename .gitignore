@@ -23,9 +23,3 @@ node_modules
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-# Created a new app.
-# Initialized your project with Git.
-# Setup Postgres database.
-# Build your project schema.
-# Create and run the necessary migration files.
-# Implemented Foreign keys constraints.
