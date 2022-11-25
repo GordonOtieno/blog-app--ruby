@@ -20,7 +20,7 @@ RSpec.describe Post, type: :model do
   end
 
   it 'title should not be too long' do
-    subject.title = 'a' * 100
+    subject.title = 'a' * 250
     expect(subject).to_not be_valid
   end
 
