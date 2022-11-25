@@ -7,6 +7,10 @@ default: &default
   password: root
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+test:
+  <<: *default
+  database: blog_app__ruby_test
+  
 development:
   <<: *default
   database: blog_app__ruby_development
