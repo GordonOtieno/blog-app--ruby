@@ -27,5 +27,4 @@ RSpec.describe User, type: :model do
   it 'check if posts counter is equal or greater than zero' do
     expect(subject.postsCounter).to be >= 0
   end
-
 end

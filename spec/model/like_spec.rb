@@ -12,7 +12,7 @@ RSpec.describe Like, type: :model do
     end
 
     it 'checks if post id is a number' do
-     id = subject.post_id = 1
+      id = subject.post_id = 1
       expect(id).to be == 1
     end
   end

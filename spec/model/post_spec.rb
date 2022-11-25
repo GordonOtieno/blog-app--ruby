@@ -47,5 +47,4 @@ RSpec.describe Post, type: :model do
   it 'check if likes counter is equal or greater than zero' do
     expect(subject.likes_counter).to be >= 0
   end
-
 end
