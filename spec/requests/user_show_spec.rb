@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "UserShows", type: :feature do
+RSpec.describe 'UserShows', type: :feature do
   it 'response body includes correct placeholder text' do
     visit user_path(1)
     expect(page).to have_content('Show a particular user')

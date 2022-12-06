@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "UserIndix", type: :feature do
+RSpec.describe 'UserIndix', type: :feature do
   it 'response body includes correct placeholder text' do
     visit users_index_path
     expect(page).to have_content('List of all users')
