@@ -1,13 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe 'PostShow', type: :feature do
-  it 'response body includes correct placeholder text' do
-    visit user_post_path(1, 1)
-    expect(page).to have_content('Show a particular post')
-  end
+RSpec.describe 'Posts', type: :request do
+  describe 'GET /show' do
+    before(:each) do
+      get '/users/1/posts/1'
+    end
+    it 'Check for response code as 200' do
+      expect(response).to have_http_status(:ok)
+    end
 
-  it 'response status was correct.' do
-    visit user_post_path(1, 1)
-    expect(page.status_code).to eq(200)
+    it 'check for the response body' do
+      expect(response.body).to include('Show a particular post')
+    end
   end
 end

@@ -1,13 +1,17 @@
 require 'rails_helper'
 
-RSpec.feature 'PostIndex', type: :feature do
-  it 'response body includes correct placeholder text' do
-    visit posts_index_path
-    expect(page).to have_content('Lists of all posts')
-  end
+RSpec.describe 'Posts', type: :request do
+  describe 'GET /index' do
+    before(:each) do
+      get '/users/1/posts'
+    end
 
-  it 'response status was correct.' do
-    visit posts_index_path
-    expect(page.status_code).to eq(200)
+    it 'Check for respeonse code as 200' do
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'Check for the response body' do
+      expect(response.body).to include('Lists of all posts')
+    end
   end
 end
