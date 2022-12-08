@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get '/posts/index'
   get '/users/index'
-
+  # Defines the root path route ("/")
   root 'users#index'
   # Defines the route for the users index page ("/users")
   resources :users, ony: [:index, :show] do
