@@ -1,26 +1,24 @@
 require 'rails_helper'
-​
 RSpec.describe 'UserShows', type: :system do
   subject { User.new(name: 'John', postsCounter: 30, photo: 'https://randomuser.me/api/portraits/men/10.jpg', bio: 'Teacher from Poland.') }
-​
   before { subject.save }
-​
+
   describe 'index page' do
     it 'I can see the username of all other users.' do
       visit root_path(subject)
       page.has_content?(subject.name)
     end
-​
+
     it 'I can see the profile picture for each user.' do
       visit root_path(subject)
       page.has_css?('.img-fluid')
     end
-​
+
     it 'I can see the number of posts each user has written.' do
       visit root_path(subject)
       page.has_content?(subject.postsCounter)
     end
-​
+
     it "When I click on a user, I am redirected to that user's show page." do
       User.delete_all
       user = User.create(name: 'John', postsCounter: 30, photo: 'https://randomuser.me/api/portraits/men/10.jpg',
@@ -31,7 +29,7 @@ RSpec.describe 'UserShows', type: :system do
       page.has_content?('John')
     end
   end
-​
+
   describe 'show page' do
     it "I can see the user's profile picture." do
       visit user_path(subject.id)
