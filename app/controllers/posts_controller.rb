@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(:author, :comments, :likes).find(params[:id])
     @user = User.find(params[:user_id])
     @comments = @post.comments
   end
@@ -16,7 +16,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    
+
     @post.author_id = current_user.id
     if @post.save
       redirect_to user_post_path(current_user, @post)
