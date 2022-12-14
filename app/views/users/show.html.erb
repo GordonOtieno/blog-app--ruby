@@ -35,17 +35,14 @@
           <small class="text-muted"
             >Comments: <%= post.comments_counter %></small
           >
+          <!-- Link to comment path -->
         </p>
-        |
         <p class="card-text">
           <small class="text-muted">Likes: <%= post.likes_counter %></small>
         </p>
       </div>
-      <% end %>
-
-      #<button class="btn mb-5">
-      #   <%= link_to "See All Posts", user_posts_path(@user) %>
-      # </button>
+      <% end %> <%= link_to "See All Posts ", user_posts_path(@user) , class:
+      "btn btn-secondary" %>
     </div>
   </div>
 </div>
