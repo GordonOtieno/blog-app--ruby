@@ -37,5 +37,3 @@ authors = User.create([
     {author_id: 1, post_id: 2},
     
   ])
-
- # api_key = ApiKey.create # Generate access token for API
