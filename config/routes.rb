@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords',
+    confirmations: 'users/confirmations',
+    unlocks: 'users/unlocks'
+  }
   get '/posts/index'
   get '/users/index'
   # Defines the root path route ("/")
@@ -11,5 +17,13 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resources :likes, only: [:create]
     end
+  end
+  namespace :api  do
+    resources :users do
+    resources :posts do
+      resources :comments
+      resources :likes
+    end
+  end
   end
 end
