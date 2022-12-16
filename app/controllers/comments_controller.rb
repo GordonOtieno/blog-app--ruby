@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
   def new
     @comments = Comment.new
   end
@@ -9,14 +10,26 @@ class CommentsController < ApplicationController
     @comments.post_id = @current_post.id
     @comments.author_id = current_user.id
     if @comments.save
-      flash[:success] = 'Comment created successfully'
-      redirect_to "/users/#{@current_post.author.id}/posts/#{@current_post.id}"
+      redirect_to user_posts_path(@current_post.author_id, @current_post.id), notice: 'New comment saved successfully'
 
     else
-      flash[:error] = 'Something went wrong'
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, alert: 'Something went wrong'
     end
   end
+
+  def destroy
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    @comment.destroy
+    if @comment.destroy
+      @comment.update_comment_counter_when_destroy
+      redirect_to user_posts_path(current_user.id), notice: 'Comment deleted successfully'
+    else
+      render :new, status: :unprocessable_entity, alert: 'Something went wrong'
+    end
+  end
+
+  private
 
   def comment_params
     params.permit(:text)
